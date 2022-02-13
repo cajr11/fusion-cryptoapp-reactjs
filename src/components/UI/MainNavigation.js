@@ -4,7 +4,7 @@ import {
   CurrencyDollarIcon,
   SwitchHorizontalIcon,
   ClockIcon,
-  FolderOpenIcon,
+  CreditCardIcon,
 } from "@heroicons/react/outline";
 import { FireIcon } from "@heroicons/react/solid";
 import MainNavLink from "./MainNavLink";
@@ -23,7 +23,7 @@ const MainNavigation = () => {
           <MainNavLink icon={<CurrencyDollarIcon className="h-7 stroke-thin" />} path="/tokens" />
           <MainNavLink icon={<SwitchHorizontalIcon className="h-7 stroke-thin" />} path="/swap" />
           <MainNavLink icon={<ClockIcon className="h-7 stroke-thin" />} path="/watchlist" />
-          <MainNavLink icon={<FolderOpenIcon className="h-7 stroke-thin"  />} path="/wallet"/>
+          <MainNavLink icon={<CreditCardIcon className="h-7 stroke-thin"  />} path="/wallet"/>
       </ul>
     </nav>
   );
