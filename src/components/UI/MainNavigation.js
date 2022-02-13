@@ -6,7 +6,7 @@ const MainNavigation = () => {
     const [selectedIcon, setSelectedIcon] = useState("Home")
 
   return (
-    <nav className='flex'>
+    <nav className='flex absolute bottom-0 w-full bg-neutral-900 rounded-lg text-stone-300'>
 
         {/* App Logo - display only md screens and up */}
         <div className='hidden'>
@@ -14,7 +14,7 @@ const MainNavigation = () => {
         </div>
         
         {/* Main nav links */}
-        <ul className='flex justify-evenly items-center w-full h-16 px-2 border-2 bg-neutral-900 rounded-lg text-stone-300'>
+        <ul className='flex justify-evenly items-center w-full h-16 px-2'>
             <li className={`h-10 w-12 flex items-center justify-center rounded-md ${selectedIcon === "Home" ? "bg-neutral-700" : ""}`} onClick={() => setSelectedIcon("Home") }>
                 <HomeIcon className='h-7 stroke-thin'/>
             </li>
