@@ -12,7 +12,7 @@ const Header = () => {
     <header className='w-full h-20 bg-neutral-900 md:h-28 flex items-center justify-between px-5 md:px-1'>
         <div className='flex w-full justify-between md:w-11/12  md:mx-auto'>
           <div className='flex items-center space-x-2'>
-              <FireIcon className='h-10 text-yellow-700' />
+              <FireIcon className='h-10 text-yellow-700 cursor-pointer' />
               <h1 className='hidden text-stone-300 font-bold text-lg md:inline-block'>FUSION</h1>
           </div>
 

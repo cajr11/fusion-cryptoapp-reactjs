@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -6,12 +8,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ 
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
 
 @tailwind base;
 @tailwind components;
@@ -29,5 +34,13 @@ code {
 
   .rotate-moon{
     transform: rotate(42deg)
+  }
+
+  .learn-blockchain {
+    background-image: url("../assets/spaceship.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Abel', sans-serif;
   }
 }

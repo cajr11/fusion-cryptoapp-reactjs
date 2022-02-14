@@ -1,8 +1,14 @@
 import React from 'react';
+import Poster from '../components/home/Poster';
 
 const Home = () => {
   return (
-    <div>Hey</div>
+    <>
+      <div className='w-11/12 mx-auto mt-2'>
+        <Poster />
+
+      </div>
+    </>
   )
 }
 
