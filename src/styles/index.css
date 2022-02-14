@@ -26,4 +26,8 @@ code {
     height: calc(100vh - 112px);
     min-height: 580px;
   }
+
+  .rotate-moon{
+    transform: rotate(42deg)
+  }
 }
