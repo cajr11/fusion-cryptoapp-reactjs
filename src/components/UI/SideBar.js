@@ -6,7 +6,6 @@ import {
   ClockIcon,
   CreditCardIcon,
 } from "@heroicons/react/outline";
-import { FireIcon } from "@heroicons/react/solid";
 import SideBarLink from "./SideBarLink";
 
 const SideBar = () => {
