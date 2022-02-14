@@ -1,12 +1,15 @@
 import React from 'react'
-import MainNavigation from './MainNavigation'
+import NavBar from './NavBar'
+import SideBar from './SideBar'
+
 
 
 const Layout = ({ children }) => {
   return (
     <div className='w-screen h-screen max-h-screen relative'>
-        <MainNavigation />
+        <NavBar />
         <main>{children}</main>
+        <SideBar />
     </div>
   )
 }

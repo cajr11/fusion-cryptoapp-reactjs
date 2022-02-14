@@ -3,9 +3,7 @@ import Layout from '../components/UI/Layout';
 
 const Home = () => {
   return (
-    <Layout>
-        Hi
-    </Layout>
+    <div>Hey</div>
   )
 }
 
