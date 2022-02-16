@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
   return (
     <div className='w-screen h-screen max-w-7xl mx-auto relative'>
         <Header />
-        <main>{children}</main>
+        <main className='overflow-x-hidden'>{children}</main>
         <SideBar />
     </div>
   )
