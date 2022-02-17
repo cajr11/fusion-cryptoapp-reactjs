@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,7 +8,6 @@ import {
   Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import faker from "@faker-js/faker";
 import { mainChartOptions } from "../../helpers/config";
 
 ChartJS.register(
@@ -18,6 +17,8 @@ ChartJS.register(
   LineElement,
   Tooltip
 );
+
+const API_KEY = process.env.REACT_APP_CMC_API_KEY;
 
 const BtcUsdMainChart = () => {
   const labels = [
@@ -29,13 +30,30 @@ const BtcUsdMainChart = () => {
     "June",
     "July",
   ];
+
+  const [btcData, setBtcData] = useState("");
+
+  useEffect(() => {
+      const getData = async () => {
+            const res = await fetch("https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0", {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "coinranking1.p.rapidapi.com",
+                    "x-rapidapi-key": "1e8b3b2d07msh1f91842ecc87f34p1352cejsna4f3846d2722"
+                }
+            })
+          const data = await res.json();
+          console.log(data);
+      }
+      getData();
+
+  },[])
+
   const data = {
     labels,
     datasets: [
       {
-        data: labels.map(() =>
-          faker.datatype.number({ min: -1000, max: 1000 })
-        ),
+        data: [1,2,3,4,5,6],
         borderColor: "rgb(74 222 128)",
         backgroundColor: "rgb(74 222 128)",
         tension: 0.2,
