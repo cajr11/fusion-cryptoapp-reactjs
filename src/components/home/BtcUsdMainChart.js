@@ -18,42 +18,45 @@ ChartJS.register(
   Tooltip
 );
 
-const API_KEY = process.env.REACT_APP_CMC_API_KEY;
+const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
 
 const BtcUsdMainChart = () => {
-  const labels = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-  ];
-
   const [btcData, setBtcData] = useState("");
+  const [timeStamps, setTimestamps] = useState("");
 
   useEffect(() => {
-      const getData = async () => {
-            const res = await fetch("https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0", {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-                    "x-rapidapi-key": "1e8b3b2d07msh1f91842ecc87f34p1352cejsna4f3846d2722"
-                }
-            })
-          const data = await res.json();
-          console.log(data);
-      }
-      getData();
-
-  },[])
+    const getData = async () => {
+      const res = await fetch(
+        "https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/history?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=7d",
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "coinranking1.p.rapidapi.com",
+            "x-rapidapi-key":
+              "1e8b3b2d07msh1f91842ecc87f34p1352cejsna4f3846d2722",
+          },
+        }
+      );
+      const data = await res.json();
+      setBtcData(
+        await data.data.history.map((point) => parseFloat(point.price)).reverse()
+      );
+      setTimestamps(
+        await data.data.history.map((point) =>
+          new Date(point.timestamp * 1000).toLocaleString("default", {
+            month: "long",
+          }) + ' ' + new Date(point.timestamp * 1000).getDate()
+        ).reverse()
+      );
+    };
+    getData();
+  }, []);
 
   const data = {
-    labels,
+    labels: timeStamps,
     datasets: [
       {
-        data: [1,2,3,4,5,6],
+        data: btcData,
         borderColor: "rgb(74 222 128)",
         backgroundColor: "rgb(74 222 128)",
         tension: 0.2,
@@ -69,9 +72,15 @@ const BtcUsdMainChart = () => {
         </h1>
 
         <div className="w-28 flex justify-between">
-          <button className="h-9 w-9 border border-stone-300 rounded-md text-xs font-bold bg-zinc-800 text-stone-200 ">7D</button>
-          <button className="h-9 w-9 border border-black rounded-md text-xs font-bold bg-zinc-800 text-stone-200">1M</button>
-          <button className="h-9 w-9 border border-black rounded-md text-xs font-bold bg-zinc-800 text-stone-200">1Y</button>
+          <button className="h-9 w-9 border border-stone-300 rounded-md text-xs font-bold bg-zinc-800 text-stone-200 ">
+            7D
+          </button>
+          <button className="h-9 w-9 border border-black rounded-md text-xs font-bold bg-zinc-800 text-stone-200">
+            1M
+          </button>
+          <button className="h-9 w-9 border border-black rounded-md text-xs font-bold bg-zinc-800 text-stone-200">
+            1Y
+          </button>
         </div>
       </div>
 

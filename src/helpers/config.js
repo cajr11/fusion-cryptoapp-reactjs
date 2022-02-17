@@ -22,13 +22,20 @@ export const mainChartOptions = {
           grid: {
             borderColor: '#1f1f1f'
           },
+          ticks: {
+            maxTicksLimit: 8,
+          },
           
         },
         y: {
           grid: {
             borderColor: '#1f1f1f'
           }
+        },
+    },
+    elements: {
+        point:{
+            radius: 0
         }
-        
     }
 };
