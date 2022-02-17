@@ -26,6 +26,7 @@ const BtcUsdMainChart = () => {
   const [btcData, setBtcData] = useState("");
   const [timeStamps, setTimestamps] = useState("");
   const [sortBy, setSortBy] = useState("7d");
+  const [isLower, setIsLower] = useState(null)
 
   const sortHandler = (e) => {
     if (e.target.textContent === "7D"){
@@ -51,8 +52,9 @@ const BtcUsdMainChart = () => {
         }
       );
       const data = await res.json();
+      const dataPoints = await data.data.history.map((point) => parseFloat(point.price)).reverse()
       setBtcData(
-        await data.data.history.map((point) => parseFloat(point.price)).reverse()
+        await dataPoints
       );
       setTimestamps(
         await data.data.history.map((point) =>
@@ -61,17 +63,21 @@ const BtcUsdMainChart = () => {
           }) + ' ' + new Date(point.timestamp * 1000).getDate()
         ).reverse()
       );
+      setIsLower(dataPoints[dataPoints.length-1] < dataPoints[0])
     };
     getData();
   }, [sortBy]);
+
+  const borderColor = isLower ? "rgb(220, 38, 38)" : "rgb(74, 222, 128)";
+  const backgroundColor = isLower ? "rgba(220, 38, 38, 0.1)" : "rgba(74, 222, 128, 0.1)";
 
   const data = {
     labels: timeStamps,
     datasets: [
       {
         data: btcData,
-        borderColor: "rgba(74, 222, 128, 0.9)",
-        backgroundColor: "rgba(74, 222, 128, 0.1)",
+        borderColor,
+        backgroundColor,
         fill: true,
         tension: 0.2,
       },

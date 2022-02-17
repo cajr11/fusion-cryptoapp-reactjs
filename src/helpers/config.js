@@ -22,7 +22,7 @@ export const mainChartOptions = {
             borderColor: '#1f1f1f'
           },
           ticks: {
-            maxTicksLimit: 8,
+            maxTicksLimit: 12,
             font: {
                 size: 10
             }
