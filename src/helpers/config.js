@@ -12,9 +12,9 @@ export const mainChartOptions = {
     layout: {
         padding: {
             top: 30,
-            bottom: 30,
+            bottom: 10,
             right: 60,
-            left: 30
+            left: 10
         } 
     },
     scales: {

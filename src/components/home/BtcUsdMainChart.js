@@ -6,6 +6,7 @@ import {
   PointElement,
   LineElement,
   Tooltip,
+  Filler
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { mainChartOptions } from "../../helpers/config";
@@ -15,6 +16,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  Filler,
   Tooltip
 );
 
@@ -44,7 +46,7 @@ const BtcUsdMainChart = () => {
       setTimestamps(
         await data.data.history.map((point) =>
           new Date(point.timestamp * 1000).toLocaleString("default", {
-            month: "long",
+            month: "short",
           }) + ' ' + new Date(point.timestamp * 1000).getDate()
         ).reverse()
       );
@@ -57,8 +59,9 @@ const BtcUsdMainChart = () => {
     datasets: [
       {
         data: btcData,
-        borderColor: "rgb(74 222 128)",
-        backgroundColor: "rgb(74 222 128)",
+        borderColor: "rgba(74, 222, 128, 0.9)",
+        backgroundColor: "rgba(74, 222, 128, 0.1)",
+        fill: true,
         tension: 0.2,
       },
     ],
