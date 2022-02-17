@@ -68,7 +68,7 @@ const BtcUsdMainChart = () => {
   };
 
   return (
-    <div className="mt-3 border w-full border-black rounded md:max-w-lg md:w-96 md:h-64 md:mt-0 bg-zinc-900">
+    <div className="mt-3 border w-full border-gray-600 rounded md:max-w-lg md:w-6/12 md:h-64 md:mt-0 bg-zinc-900 lg:h-72">
       <div className="w-full px-2 py-2 flex items-center justify-between">
         <h1 className="flex justify-center items-center h-9 border rounded-md border-black w-20 text-xs font-bold bg-zinc-800 text-stone-200">
           BTC / USD
@@ -87,7 +87,7 @@ const BtcUsdMainChart = () => {
         </div>
       </div>
 
-      <Line options={mainChartOptions} data={data} />
+      <Line options={mainChartOptions} data={data} className="mb-2 lg:pb-7" />
     </div>
   );
 };

@@ -2,7 +2,7 @@ export const mainChartOptions = {
     responsive: true,
     plugins: {
       legend: {
-        display: false
+        display: false,
       },
       title: {
         display: false,
@@ -11,9 +11,8 @@ export const mainChartOptions = {
     },
     layout: {
         padding: {
-            top: 30,
-            bottom: 10,
-            right: 60,
+            top: 10,
+            right: 20,
             left: 10
         } 
     },
@@ -24,13 +23,21 @@ export const mainChartOptions = {
           },
           ticks: {
             maxTicksLimit: 8,
+            font: {
+                size: 10
+            }
           },
-          
         },
+
         y: {
           grid: {
             borderColor: '#1f1f1f'
-          }
+          },
+          ticks: {
+            font: {
+                size: 10
+            }
+          },
         },
     },
     elements: {

@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <>
+    <div className="bg-neutral-900">
       <Layout>
         <Routes>
             <Route path="/" element={<Home />} />
@@ -14,7 +14,7 @@ function App() {
             <Route />
         </Routes>
       </Layout>
-    </>
+    </div>
   );
 }
 

@@ -10,7 +10,7 @@ import SideBarLink from "./SideBarLink";
 
 const SideBar = () => {
   return (
-    <aside className="fixed bottom-0 w-full bg-neutral-900 flex items-center text-stone-300 md:top-28 md:w-40 md:nav-md">
+    <aside className="fixed bottom-0 w-full bg-neutral-900 flex items-center text-stone-300 md:absolute md:top-28 md:w-40 md:nav-md">
       {/* SideBar links */}
       <ul className="flex justify-evenly items-center w-full h-20 px-2 md:flex-col md:top-16 md:h-full">
           <SideBarLink icon={<HomeIcon className="h-7 stroke-thin" />} path="/" name="Home" />

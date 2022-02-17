@@ -3,7 +3,7 @@ import React from 'react'
 const Poster = () => {
 
   return (
-    <div className='learn-blockchain w-full h-64 rounded-md relative md:max-w-lg'>
+    <div className='learn-blockchain w-full h-64 rounded-md relative md:w-6/12 lg:h-72 border border-gray-600'>
         <p className='text-stone-300 text-4xl w-56 font-bold absolute top-24 left-4'>LEARN ABOUT
             <span className='text-fuchsia-500'> BLOCKCHAIN</span>
         </p>
