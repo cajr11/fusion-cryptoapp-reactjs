@@ -20,7 +20,7 @@ const Header = () => {
             <SearchIcon className='absolute h-5 top-3 right-2 .stroke-thin'/>
           </div>
 
-          <div className='w-24 flex justify-between items-center'>
+          <div className='w-24 flex justify-between items-center md:-mr-7'>
             <Notifications />
             <SignIn />
           </div>

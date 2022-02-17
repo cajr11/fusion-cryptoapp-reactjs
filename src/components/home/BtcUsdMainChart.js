@@ -20,16 +20,27 @@ ChartJS.register(
   Tooltip
 );
 
-const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
+// const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
 
 const BtcUsdMainChart = () => {
   const [btcData, setBtcData] = useState("");
   const [timeStamps, setTimestamps] = useState("");
+  const [sortBy, setSortBy] = useState("7d");
+
+  const sortHandler = (e) => {
+    if (e.target.textContent === "7D"){
+      setSortBy("7d");
+    } else if (e.target.textContent === "1M"){
+      setSortBy("30d");
+    } else if (e.target.textContent === "1Y") {
+      setSortBy("1y");
+    };
+  }
 
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        "https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/history?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=7d",
+        `https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/history?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=${sortBy}`,
         {
           method: "GET",
           headers: {
@@ -52,7 +63,7 @@ const BtcUsdMainChart = () => {
       );
     };
     getData();
-  }, []);
+  }, [sortBy]);
 
   const data = {
     labels: timeStamps,
@@ -75,13 +86,13 @@ const BtcUsdMainChart = () => {
         </h1>
 
         <div className="w-28 flex justify-between">
-          <button className="h-9 w-9 border border-stone-300 rounded-md text-xs font-bold bg-zinc-800 text-stone-200 ">
+          <button className={`h-9 w-9  ${sortBy === "7d" ? "border border-stone-300" : ""} rounded-md text-xs font-bold bg-zinc-800 text-stone-200`} onClick={sortHandler}>
             7D
           </button>
-          <button className="h-9 w-9 border border-black rounded-md text-xs font-bold bg-zinc-800 text-stone-200">
+          <button className={`h-9 w-9 ${sortBy === "30d" ? "border border-stone-300" : ""} rounded-md text-xs font-bold bg-zinc-800 text-stone-200`} onClick={sortHandler}>
             1M
           </button>
-          <button className="h-9 w-9 border border-black rounded-md text-xs font-bold bg-zinc-800 text-stone-200">
+          <button className={`h-9 w-9 ${sortBy === "1y" ? "border border-stone-300" : ""} rounded-md text-xs font-bold bg-zinc-800 text-stone-200`} onClick={sortHandler}>
             1Y
           </button>
         </div>
