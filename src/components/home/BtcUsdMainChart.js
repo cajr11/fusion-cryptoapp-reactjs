@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { mainChartOptions } from "../../helpers/config";
+import { Rings } from "react-loader-spinner";
 
 ChartJS.register(
   CategoryScale,

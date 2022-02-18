@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import CarouselItem from './CarouselItem';
 import Carousel from "react-elastic-carousel"
+import { Rings } from 'react-loader-spinner';
 
 const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY;
 
@@ -28,9 +29,9 @@ const CarouselTopTen = () => {
     { width: 800, itemsToShow: 4 },
   ];
 
-
   return (
     <Carousel className='h-full w-full' breakPoints={breakPoints} enableMouseSwipe={true}>
+      {!topCoins && <Rings color="rgb(217, 119, 6)" height={80} width={80}/>}
       {topCoins && topCoins.map((coin) => (
         <CarouselItem key={coin.uuid} name={coin.name} symbol={coin.iconUrl} change={coin.change} price={coin.price} />
       ))}

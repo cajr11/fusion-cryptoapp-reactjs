@@ -1,14 +1,15 @@
 import Layout from "./components/UI/Layout";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import Tokens from "./pages/Tokens";
 
 function App() {
   return (
-    <div className="bg-gray-600">
+    <div className="bg-gray-500">
       <Layout>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route />
+            <Route path="/tokens" element={<Tokens />} />
             <Route />
             <Route />
             <Route />

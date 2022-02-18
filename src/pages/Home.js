@@ -10,7 +10,7 @@ const Home = () => {
         <Poster />
         <BtcUsdMainChart />
       </div>
-      <div className="w-11/12 md:carousel-coins mx-auto mt-2 h-64 md:h-64 bg-neutral-900 flex flex-col justify-center rounded-md">
+      <div className="w-11/12 md:carousel-coins mx-auto mt-2 h-64 md:h-64 bg-neutral-900 flex flex-col justify-center rounded-md border border-gray-600">
           <h1 className='mt-3 mb-3 text-center text-slate-300 font-bold'>Top 10 Coins</h1>
           <CarouselTopTen />
       </div>
