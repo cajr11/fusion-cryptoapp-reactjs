@@ -16,6 +16,24 @@ code {
     monospace;
 }
 
+.rec.rec-arrow {
+  background-color: transparent !important;
+  color: #fff;
+}
+/* round buttons on hover */
+.rec.rec-arrow:hover,
+.rec.rec-arrow:active  {
+  border-radius: 50%;
+  background-color: transparent !important;
+}
+/* hide disabled buttons */
+.rec.rec-arrow:disabled {
+  visibility: hidden;
+}
+
+.rec.rec-dot{
+  display: none
+}
 
 
 @tailwind base;
@@ -37,7 +55,7 @@ code {
   }
 
   .learn-blockchain {
-    background-image: url("../assets/spaceship.jpg");
+    background-image: url("../assets/block-chain.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
