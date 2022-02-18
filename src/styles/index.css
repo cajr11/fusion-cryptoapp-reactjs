@@ -61,4 +61,8 @@ code {
     background-position: center;
     font-family: 'Abel', sans-serif;
   }
+
+  .carousel-coins{
+    width: 95%;
+  }
 }
