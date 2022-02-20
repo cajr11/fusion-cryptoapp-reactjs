@@ -22,7 +22,7 @@ ChartJS.register(
 
 const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY;
 
-const TokenChart = ({ uuid }) => {
+const TokenChart = ({ uuid, name }) => {
   const [btcData, setBtcData] = useState("");
   const [timeStamps, setTimestamps] = useState("");
   const [sortBy, setSortBy] = useState("7d");
@@ -87,7 +87,7 @@ const TokenChart = ({ uuid }) => {
     <div className="mt-3 border w-full border-gray-600 rounded md:w-full md:mt-0 bg-zinc-900">
       <div className="w-full px-2 py-2 flex items-center justify-between">
         <h1 className="flex justify-center items-center h-9 border rounded-md border-black w-32 text-sm font-bold bg-zinc-800 text-stone-200">
-          BTC / USD
+          {name.split(" ")[0]} / USD
         </h1>
 
         <div className="w-28 flex justify-between">

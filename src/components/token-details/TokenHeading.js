@@ -6,7 +6,6 @@ const TokenHeading = ({ price, change, icon, name, symbol}) => {
 
   return (
     <div className='w-full flex justify-between h-20 items-center'>
-
       {/* Heading & Logo */}
         <div className='flex items-center'>
           <img src={icon} alt="token logo" className='h-8 w-8 rounded-full object-cover mr-2 md:h-10 md:w-10 lg:h-16 lg:w-16 lg:mr-4' />
