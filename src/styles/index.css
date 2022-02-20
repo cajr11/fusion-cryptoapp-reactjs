@@ -81,4 +81,11 @@ code {
   .token-container-medium{
     height:550px
   }
+
+  .token-description h3 {
+    text-align: center;
+    margin: 4px 0px;
+    font-size: 20px;
+    text-decoration: underline;
+  }
 }
