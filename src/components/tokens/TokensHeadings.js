@@ -10,7 +10,7 @@ const TokensHeadings = () => {
     }
 
   return (
-    <div className='w-full h-12 border border-gray-600 mt-1 border-x-0 flex text-stone-300 px-1'>
+    <div className='sticky top-0 w-full h-14 bg-neutral-900 z-10 border border-gray-600 border-x-0 flex text-stone-300 px-1'>
         <button  className='font-bold text-sm h-full flex justify-center items-center basis-1/12'>#{isAscending ?  <ChevronUpIcon className='h-4' onClick={changeOrderHandler}/> : <ChevronDownIcon className='h-4' onClick={changeOrderHandler} />}</button>
         <div className='font-bold text-sm h-full flex justify-center items-center basis-2/12'>Name</div>
         <div className='font-bold text-sm h-full flex justify-center items-center basis-2/12'>Price</div>
