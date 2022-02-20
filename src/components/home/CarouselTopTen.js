@@ -31,7 +31,7 @@ const CarouselTopTen = () => {
 
   return (
     <Carousel className='h-full w-full' breakPoints={breakPoints} enableMouseSwipe={true}>
-      {!topCoins && <Rings color="rgb(217, 119, 6)" height={80} width={80}/>}
+      {!topCoins && <Rings color="rgb(217, 119, 6)" height={200} width={200}/>}
       {topCoins && topCoins.map((coin) => (
         <CarouselItem key={coin.uuid} name={coin.name} symbol={coin.iconUrl} change={coin.change} price={coin.price} />
       ))}

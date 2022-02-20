@@ -63,6 +63,14 @@ code {
   }
 
   .carousel-coins{
-    width: 95%;
+    width: 98%;
+  }
+
+  .token-container{
+    height: 450px
+  }
+
+  .tokenlist-item{
+    font-size: 10px
   }
 }

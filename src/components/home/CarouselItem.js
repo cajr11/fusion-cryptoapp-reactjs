@@ -12,7 +12,7 @@ const CarouselItem = ({ name, symbol, change, price }) => {
         <p className={`${!isNegative ? "text-green-600" : "text-red-600"} font-bold flex items-center`}>
           {isNegative && <ChevronDownIcon className='h-4' />}
           {!isNegative && <ChevronUpIcon className='h-4' />}
-          {change.split("-").join("")}
+          {change.split("-").join("")}%
           </p>
     </div>
   )
