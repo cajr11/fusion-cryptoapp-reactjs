@@ -2,15 +2,22 @@ import React, { useState, useEffect } from 'react';
 import TokensHeadings from '../components/tokens/TokensHeadings';
 import TokensListItem from '../components/tokens/TokensListItem';
 import { Rings } from 'react-loader-spinner';
+import TokensPagination from '../components/tokens/TokensPagination';
 
 const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY;
 
 const Tokens = () => {
     const [tokensLoaded, setTokensLoaded] = useState(null);
+    const [isAscending, setIsAscending] = useState(false);
+
+    const sortData = (val) => {
+        setIsAscending(val);
+    }
+
 
     useEffect(() => {
         const getTokens = async () => {
-            const res = await fetch("https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers=1&orderBy=marketCap&orderDirection=desc&limit=50", {
+            const res = await fetch(`https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers=1&orderBy=marketCap&orderDirection=desc&limit=50`, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "coinranking1.p.rapidapi.com",
@@ -26,11 +33,12 @@ const Tokens = () => {
     }, [])
 
   return (
-    <div className='w-11/12 mx-auto mt-2'>
+    <div className='w-11/12 border tokens-page-height mx-auto mt-2'>
         <h1 className='text-stone-300 font-bold text-xl text-center underline underline-offset-8'>Top 100 Cryptocurrencies</h1>
         <div className='border border-gray-600 mt-4 token-container rounded-md bg-neutral-900 overflow-y-scroll relative'>
 
-            <TokensHeadings />
+            {/* Column headinds */}
+            <TokensHeadings sort={sortData} />
 
             {/* Token list items container */}
             <div className='absolute top-14 w-full'>
@@ -39,10 +47,15 @@ const Tokens = () => {
                     <Rings color="rgb(217, 119, 6)" height={200} width={200}/>
                 </div>)}
                 
+                    {/* List items ascending or descending */}
+                {tokensLoaded && !isAscending && tokensLoaded.map(token => <TokensListItem key={token.uuid} name={token.name} volume={token["24hVolume"]} rank={token.rank} icon={token.iconUrl} price={token.price} market={token.marketCap} change={token.change} symbol={token.symbol} /> )}
 
-                {tokensLoaded && tokensLoaded.map(token => <TokensListItem key={token.uuid} name={token.name} volume={token["24hVolume"]} rank={token.rank} icon={token.iconUrl} price={token.price} market={token.marketCap} change={token.change} symbol={token.symbol} /> )}
+                {tokensLoaded && isAscending && tokensLoaded.map(token => <TokensListItem key={token.uuid} name={token.name} volume={token["24hVolume"]} rank={token.rank} icon={token.iconUrl} price={token.price} market={token.marketCap} change={token.change} symbol={token.symbol} /> ).reverse()}
             </div>
         </div>
+
+         {/* Pagination Buttons */}
+         <TokensPagination />
     </div>
   )
 }

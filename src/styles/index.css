@@ -67,10 +67,18 @@ code {
   }
 
   .token-container{
-    height: 450px
+    height: calc(100% - 112px)
   }
 
   .tokenlist-item{
     font-size: 10px
+  }
+
+  .tokens-page-height {
+    height: calc(100vh - 190px)
+  }
+
+  .tokens-text-smaller {
+    font-size: 8px
   }
 }
