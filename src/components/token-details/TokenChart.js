@@ -22,7 +22,7 @@ ChartJS.register(
 
 const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY;
 
-const TokenChart = () => {
+const TokenChart = ({ uuid }) => {
   const [btcData, setBtcData] = useState("");
   const [timeStamps, setTimestamps] = useState("");
   const [sortBy, setSortBy] = useState("7d");
@@ -41,7 +41,7 @@ const TokenChart = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        `https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/history?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=${sortBy}`,
+        `https://coinranking1.p.rapidapi.com/coin/${uuid.tokenDetails}/history?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=${sortBy}`,
         {
           method: "GET",
           headers: {
@@ -65,7 +65,7 @@ const TokenChart = () => {
       setIsLower(dataPoints[dataPoints.length-1] < dataPoints[0])
     };
     getData();
-  }, [sortBy]);
+  }, [sortBy, uuid.tokenDetails]);
 
   const borderColor = isLower ? "rgb(220, 38, 38)" : "rgb(74, 222, 128)";
   const backgroundColor = isLower ? "rgba(220, 38, 38, 0.1)" : "rgba(74, 222, 128, 0.1)";
