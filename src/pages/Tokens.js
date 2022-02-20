@@ -53,9 +53,9 @@ const Tokens = () => {
                 </div>)}
                 
                     {/* List items ascending or descending */}
-                {tokensLoaded && !isAscending && tokensLoaded.map(token => <TokensListItem key={token.uuid} name={token.name} volume={token["24hVolume"]} rank={token.rank} icon={token.iconUrl} price={token.price} market={token.marketCap} change={token.change} symbol={token.symbol} /> )}
+                {tokensLoaded && !isAscending && tokensLoaded.map(token => <TokensListItem key={token.uuid} name={token.name} volume={token["24hVolume"]} rank={token.rank} icon={token.iconUrl} price={token.price} market={token.marketCap} change={token.change} symbol={token.symbol} path={token.uuid}/> )}
 
-                {tokensLoaded && isAscending && tokensLoaded.map(token => <TokensListItem key={token.uuid} name={token.name} volume={token["24hVolume"]} rank={token.rank} icon={token.iconUrl} price={token.price} market={token.marketCap} change={token.change} symbol={token.symbol} /> ).reverse()}
+                {tokensLoaded && isAscending && tokensLoaded.map(token => <TokensListItem key={token.uuid} name={token.name} volume={token["24hVolume"]} rank={token.rank} icon={token.iconUrl} price={token.price} market={token.marketCap} change={token.change} symbol={token.symbol} path={token.uuid} /> ).reverse()}
             </div>
         </div>
 
