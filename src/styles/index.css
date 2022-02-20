@@ -50,10 +50,6 @@ code {
     min-height: 580px;
   }
 
-  .rotate-moon{
-    transform: rotate(42deg)
-  }
-
   .learn-blockchain {
     background-image: url("../assets/block-chain.jpeg");
     background-size: cover;

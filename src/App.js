@@ -2,6 +2,7 @@ import Layout from "./components/UI/Layout";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Tokens from "./pages/Tokens";
+import TokenDetails from "./pages/TokenDetails";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/tokens" element={<Tokens />} />
-            <Route />
+            <Route path="/tokens/:tokenDetails" element={<TokenDetails />}/>
             <Route />
             <Route />
         </Routes>
