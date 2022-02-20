@@ -9,15 +9,20 @@ const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY;
 const Tokens = () => {
     const [tokensLoaded, setTokensLoaded] = useState(null);
     const [isAscending, setIsAscending] = useState(false);
+    const [page, setPage] = useState(1);
 
     const sortData = (val) => {
         setIsAscending(val);
     }
 
+    const chosenPageHandler = (val) => {
+        setPage(val)
+    }
+
 
     useEffect(() => {
         const getTokens = async () => {
-            const res = await fetch(`https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers=1&orderBy=marketCap&orderDirection=desc&limit=50`, {
+            const res = await fetch(`https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers=1&orderBy=marketCap&orderDirection=desc&limit=50${page === 2 ? "&offset=50" : ""}`, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "coinranking1.p.rapidapi.com",
@@ -30,10 +35,10 @@ const Tokens = () => {
             setTokensLoaded(await data.data.coins);
         }
         getTokens();
-    }, [])
+    }, [page])
 
   return (
-    <div className='w-11/12 border tokens-page-height mx-auto mt-2'>
+    <div className='w-11/12 tokens-page-height mx-auto mt-2'>
         <h1 className='text-stone-300 font-bold text-xl text-center underline underline-offset-8'>Top 100 Cryptocurrencies</h1>
         <div className='border border-gray-600 mt-4 token-container rounded-md bg-neutral-900 overflow-y-scroll relative'>
 
@@ -55,7 +60,7 @@ const Tokens = () => {
         </div>
 
          {/* Pagination Buttons */}
-         <TokensPagination />
+         <TokensPagination onPageChosen={chosenPageHandler} />
     </div>
   )
 }

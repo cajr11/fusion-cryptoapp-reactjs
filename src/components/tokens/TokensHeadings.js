@@ -15,7 +15,7 @@ const TokensHeadings = ({ sort }) => {
       } else if(!isAscending) {
         sort(false)
       }
-    })
+    }, [isAscending, sort])
 
   return (
     <div className='sticky top-0 w-full h-14 bg-neutral-900 z-10 border border-gray-600 border-x-0 flex text-stone-300 px-1 font-bold tokens-text-smaller md:text-sm'>

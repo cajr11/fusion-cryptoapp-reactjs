@@ -67,7 +67,7 @@ code {
   }
 
   .token-container{
-    height: calc(100% - 112px)
+    height: calc(100% - 95px)
   }
 
   .tokenlist-item{
@@ -75,7 +75,7 @@ code {
   }
 
   .tokens-page-height {
-    height: calc(100vh - 190px)
+    height: calc(100vh - 180px)
   }
 
   .tokens-text-smaller {
