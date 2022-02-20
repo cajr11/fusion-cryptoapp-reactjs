@@ -5,7 +5,7 @@ const TokensListItem = ({ name, rank, volume, market, icon, price, change, symbo
     const isNegative = parseFloat(change) < 0 ? true : false;
 
   return (
-    <div className='h-16 border border-x-0 border-t-0 border-b-gray-600 flex items-center justify-center text-stone-300 tokens-text-smaller md:tokenlist-item cursor-pointer'>
+    <div className='h-16 border border-x-0 border-t-0 border-b-gray-600 flex items-center justify-center text-stone-300 tokens-text-smaller md:tokenlist-item lg:text-xs cursor-pointer'>
 
         {/* Ranking */}
         <div className='h-full flex justify-center items-center basis-1/12 font-bold'>{rank}</div>
@@ -15,7 +15,7 @@ const TokensListItem = ({ name, rank, volume, market, icon, price, change, symbo
             <img src={icon} alt="token logo" className='h-5 w-5 object-cover rounded-full mb-1'/>
             <p>
                 <span className='hidden lg:inline-block md:mr-1'>{name}</span>
-                <span>{symbol}</span>
+                <span className='lg:text-stone-500'>{symbol}</span>
             </p>
         </div>
 

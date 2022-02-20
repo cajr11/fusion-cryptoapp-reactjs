@@ -81,4 +81,8 @@ code {
   .tokens-text-smaller {
     font-size: 8px
   }
+
+  .token-container-medium{
+    height:550px
+  }
 }

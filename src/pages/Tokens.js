@@ -38,7 +38,7 @@ const Tokens = () => {
     }, [page])
 
   return (
-    <div className='w-11/12 tokens-page-height mx-auto mt-2'>
+    <div className='w-11/12 tokens-page-height md:token-container-medium mx-auto mt-2'>
         <h1 className='text-stone-300 font-bold text-xl text-center underline underline-offset-8'>Top 100 Cryptocurrencies</h1>
         <div className='border border-gray-600 mt-4 token-container rounded-md bg-neutral-900 overflow-y-scroll relative'>
 
