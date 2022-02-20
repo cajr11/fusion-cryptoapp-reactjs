@@ -6,7 +6,7 @@ const TokensListItem = ({ name, rank, volume, market, icon, price, change, symbo
     const isNegative = parseFloat(change) < 0 ? true : false;
 
   return (
-   <NavLink >
+   <NavLink to={`/tokens/${path}`}>
         <div className='h-16 border border-x-0 border-t-0 border-b-gray-600 flex items-center justify-center text-stone-300 tokens-text-smaller md:tokenlist-item lg:text-xs cursor-pointer'>
 
             {/* Ranking */}
