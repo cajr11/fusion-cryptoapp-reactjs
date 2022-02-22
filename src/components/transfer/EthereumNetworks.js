@@ -15,12 +15,12 @@ const EthereumNetworks = () => {
     }
 
   return (
-    <div className='w-40 md:w-52 h-full flex items-center justify-evenly'>
+    <div className='w-40 md:w-52 h-full flex items-center justify-evenly border border-gray-600'>
         <input type="radio" name="chain" value="Ethereum" className='hidden'/>
-        <label for="ethereum" className={`${mainNetActive ? 'bg-gray-800' : ''} text-yellow-600 border w-1/2 text-center h-full flex items-center justify-center cursor-pointer`} onClick={mainNetActiveHandler}>Mainnet</label>
+        <label for="ethereum" className={`${mainNetActive ? 'bg-neutral-900' : ''} text-stone-300 w-1/2 text-center h-full flex items-center justify-center cursor-pointer`} onClick={mainNetActiveHandler}>Mainnet</label>
 
         <input type="radio" name="chain" value="BSC" className='hidden'/>
-        <label for="BSC" className={`${testNetActive ? 'bg-gray-800' : ''} text-yellow-600 border w-1/2 text-center h-full flex items-center justify-center cursor-pointer`} onClick={testNetActiveHandler}>Testnet</label>
+        <label for="BSC" className={`${testNetActive ? 'bg-neutral-900' : ''} text-stone-300 w-1/2 text-center h-full flex items-center justify-center cursor-pointer`} onClick={testNetActiveHandler}>Testnet</label>
     </div>
   )
 }
