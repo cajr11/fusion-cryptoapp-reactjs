@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Tokens from "./pages/Tokens";
 import TokenDetails from "./pages/TokenDetails";
+import Transfer from "./pages/Transfer";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/tokens" element={<Tokens />} />
             <Route path="/tokens/:tokenDetails" element={<TokenDetails />}/>
-            <Route />
+            <Route path="/transfer" element={<Transfer />}/>
             <Route />
         </Routes>
       </Layout>

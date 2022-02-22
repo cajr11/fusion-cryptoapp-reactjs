@@ -15,7 +15,7 @@ const SideBar = () => {
       <ul className="flex justify-evenly items-center w-full h-20 px-2 md:flex-col md:top-16 md:h-full">
           <SideBarLink icon={<HomeIcon className="h-7 stroke-thin" />} path="/" name="Home" />
           <SideBarLink icon={<CurrencyDollarIcon className="h-7 stroke-thin" />} path="/tokens" name="Tokens" />
-          <SideBarLink icon={<SwitchHorizontalIcon className="h-7 stroke-thin" />} path="/swap" name="Swap" />
+          <SideBarLink icon={<SwitchHorizontalIcon className="h-7 stroke-thin" />} path="/transfer" name="Transfer" />
           <SideBarLink icon={<ClockIcon className="h-7 stroke-thin" />} path="/watchlist"  name="Watchlist"/>
           <SideBarLink icon={<CreditCardIcon className="h-7 stroke-thin"  />} path="/wallet" name="Wallet"/>
       </ul>
