@@ -22,12 +22,12 @@ const Chain = () => {
        <div className='w-full h-full flex items-center justify-between md:w-4/6'>
 
             {/* Chains */}
-            <div className='w-40 md:w-52 h-full flex items-center justify-evenly border border-gray-600'>
+            <div className='w-40 md:w-52 h-full flex items-center justify-evenly border-2 border-gray-600 rounded-md'>
                 <input type="radio" name="chain" value="Ethereum" className='hidden'/>
-                <label for="ethereum" className={`${ethActive ? 'bg-neutral-900' : ''} text-stone-300 w-1/2 text-center h-full flex items-center justify-center cursor-pointer`} onClick={ethSelectedHandler}>Ethereum</label>
+                <label htmlFor="ethereum" className={`${ethActive ? 'bg-neutral-900' : ''} text-stone-300 w-1/2 text-center h-full rounded-md flex items-center justify-center cursor-pointer text-sm`} onClick={ethSelectedHandler}>Ethereum</label>
 
                 <input type="radio" name="chain" value="BSC" className='hidden'/>
-                <label for="BSC" className={`${bscActive ? 'bg-neutral-900' : ''} text-stone-300 w-1/2 text-center h-full flex items-center justify-center cursor-pointer`} onClick={bscSelectedHandler}>BSC</label>
+                <label htmlFor="BSC" className={`${bscActive ? 'bg-neutral-900' : ''} text-stone-300 w-1/2 text-center h-full rounded-md flex items-center justify-center cursor-pointer text-sm`} onClick={bscSelectedHandler}>BSC</label>
             </div>
 
 

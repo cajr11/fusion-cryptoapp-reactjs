@@ -15,12 +15,12 @@ const BscNetworks = () => {
     }
 
   return (
-    <div className='w-40 md:w-52 h-full flex items-center justify-evenly border border-gray-600'>
+    <div className='w-40 md:w-52 h-full flex items-center justify-evenly border-2 border-gray-600 rounded-md'>
         <input type="radio" name="chain" value="Ethereum" className='hidden'/>
-        <label for="ethereum" className={`${mainNetActive ? 'bg-neutral-900' : ''} text-stone-300  w-1/2 text-center h-full flex items-center justify-center cursor-pointer`} onClick={mainNetActiveHandler}>Mainnet</label>
+        <label htmlFor="ethereum" className={`${mainNetActive ? 'bg-neutral-900' : ''} text-stone-300  w-1/2 text-center h-full rounded-md flex items-center justify-center cursor-pointer text-sm`} onClick={mainNetActiveHandler}>Mainnet</label>
 
         <input type="radio" name="chain" value="BSC" className='hidden'/>
-        <label for="BSC" className={`${testNetActive ? 'bg-neutral-900' : ''} text-stone-300  w-1/2 text-center h-full flex items-center justify-center cursor-pointer`} onClick={testNetActiveHandler}>Testnet</label>
+        <label htmlFor="BSC" className={`${testNetActive ? 'bg-neutral-900' : ''} text-stone-300  w-1/2 text-center h-full rounded-md flex items-center justify-center cursor-pointer text-sm`} onClick={testNetActiveHandler}>Testnet</label>
     </div>
   )
 }

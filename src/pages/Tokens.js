@@ -31,7 +31,6 @@ const Tokens = () => {
             })
 
             const data = await res.json();
-            console.log(await data);
             setTokensLoaded(await data.data.coins);
         }
         getTokens();
