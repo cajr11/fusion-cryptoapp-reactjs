@@ -26,15 +26,15 @@ const ConnectWallet = () => {
                  // Allows our Dapp to sign transactions so user can send ether and pay to change state within the blockchain.
                  // const signer = provider.getSigner()
  
-                 ctx.onLogin();
                  setBtnActive(true);
+                 ctx.onLogin();
             } else{
                 throw new Error("Please install MetaMask!")
             }
             
         } catch(error) {
-            setIsError(error)
             setBtnActive(true);
+            setIsError(error)
         }
        
     }
