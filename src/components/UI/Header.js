@@ -3,7 +3,7 @@ import { FireIcon } from '@heroicons/react/solid';
 import { SearchIcon } from '@heroicons/react/outline';
 import SearchBar from '../header/SearchBar';
 import Notifications from '../header/Notifications';
-import SignIn from '../header/SignIn';
+import SignOut from '../header/SignOut';
 
 
 const Header = () => {
@@ -22,7 +22,7 @@ const Header = () => {
 
           <div className='w-24 flex justify-between items-center md:-mr-7'>
             <Notifications />
-            <SignIn />
+            <SignOut />
           </div>
         </div>
     </header>
