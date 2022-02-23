@@ -5,7 +5,8 @@ import ErrorModal from './ErrorModal';
 
 const ConnectWallet = () => {
     const ctx = useContext(AuthContext);
-    const [isError, setIsError] = useState(false)
+    const [isError, setIsError] = useState(false);
+    const [btnActive, setBtnActive] = useState(true);
 
 
     const closeModalHandler = () => {
@@ -13,6 +14,7 @@ const ConnectWallet = () => {
     }
 
     const connectWalletHandler = async () => {
+        setBtnActive(false)
         try {
             if(window.ethereum){
                  // A Web3Provider wraps a standard Web3 provider, which is what MetaMask injects as window.ethereum into each page
@@ -25,21 +27,22 @@ const ConnectWallet = () => {
                  // const signer = provider.getSigner()
  
                  ctx.onLogin();
+                 setBtnActive(true);
             } else{
                 throw new Error("Please install MetaMask!")
             }
             
         } catch(error) {
             setIsError(error)
+            setBtnActive(true);
         }
-
        
     }
 
     return (
         <>
             <div className='mt-3 mx-auto w-11/12 h-96 flex items-center justify-center'>
-                <button className='w-40 h-16 rounded-md bg-neutral-900 font-bold text-stone-300' onClick={connectWalletHandler}>
+                <button className={`w-40 h-16 rounded-md bg-neutral-900 font-bold text-stone-300 ${btnActive ? "" : "cursor-not-allowed"}`} onClick={connectWalletHandler} disabled={!btnActive}>
                     Connect Wallet
                 </button>
             </div>
