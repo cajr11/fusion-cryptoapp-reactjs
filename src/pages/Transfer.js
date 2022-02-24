@@ -1,12 +1,19 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Chain from '../components/transfer/Chain'
 import AuthContext from '../store/auth-context';
 import ConnectWallet from '../components/UI/ConnectWallet';
+import ErrorModal from '../components/UI/ErrorModal';
 
 const Transfer = () => {
-    const [amount, setAmount] = useState("")
-    const [destinationAddress, setDestinationAddress] = useState("")
+    const [amount, setAmount] = useState("");
+    const [destinationAddress, setDestinationAddress] = useState("");
+    const [isError, setIsError] = useState(false)
     const ctx = useContext(AuthContext);
+
+
+    const closeModalHandler = () => {
+        setIsError(false);
+    };
 
 
     const destinationAddressHandler = (e) => {
@@ -17,11 +24,35 @@ const Transfer = () => {
         setAmount(parseFloat(e.target.value));
     }
 
+    useEffect(() => {
+        const chainChangedhandler = (chainId) => {
+            try{
+                    if (chainId !== "0x1" && chainId !== "0x3" && chainId !== "0x38" && chainId !== "0x61"){
+                        throw new Error("Network not supported, please connect again");
+                    }
+            }catch(error){
+                setIsError(error);
+                ctx.onLogout();
+            }
+        }
+
+        if(window.ethereum){
+            window.ethereum.on("chainChanged", chainChangedhandler)
+        }
+        
+        return () => {
+            window.ethereum.removeListener("chainChanged", chainChangedhandler)
+        }
+    }, [ctx])
+
 
 
     if (!ctx.isLoggedIn) {
         return (
-           <ConnectWallet />
+           <>
+            <ConnectWallet />
+            {isError && <ErrorModal err={isError} onCloseModal={closeModalHandler} />}
+           </>
         )
     }
     

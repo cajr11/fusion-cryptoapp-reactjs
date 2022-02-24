@@ -21,6 +21,9 @@ export const AuthContextProvider = (props) => {
     }
 
     const logoutHandler = () => {
+        window.ethereum.on('disconnect', ()=>{
+            console.log("disconnected");
+        });
         setisLoggedIn(false);
         localStorage.removeItem("loggedIn")
     }
