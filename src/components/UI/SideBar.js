@@ -3,7 +3,6 @@ import {
   HomeIcon,
   CurrencyDollarIcon,
   SwitchHorizontalIcon,
-  ClockIcon,
   CreditCardIcon,
 } from "@heroicons/react/outline";
 import SideBarLink from "./SideBarLink";
@@ -16,7 +15,6 @@ const SideBar = () => {
           <SideBarLink icon={<HomeIcon className="h-7 stroke-thin" />} path="/" name="Home" />
           <SideBarLink icon={<CurrencyDollarIcon className="h-7 stroke-thin" />} path="/tokens" name="Tokens" />
           <SideBarLink icon={<SwitchHorizontalIcon className="h-7 stroke-thin" />} path="/transfer" name="Transfer" />
-          <SideBarLink icon={<ClockIcon className="h-7 stroke-thin" />} path="/watchlist"  name="Watchlist"/>
           <SideBarLink icon={<CreditCardIcon className="h-7 stroke-thin"  />} path="/wallet" name="Wallet"/>
       </ul>
     </aside>

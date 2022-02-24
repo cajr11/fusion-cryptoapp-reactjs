@@ -2,7 +2,6 @@ import React from 'react';
 import { FireIcon } from '@heroicons/react/solid';
 import { SearchIcon } from '@heroicons/react/outline';
 import SearchBar from '../header/SearchBar';
-import Notifications from '../header/Notifications';
 import SignOut from '../header/SignOut';
 
 
@@ -20,8 +19,7 @@ const Header = () => {
             <SearchIcon className='absolute h-5 top-3 right-2 .stroke-thin'/>
           </div>
 
-          <div className='w-24 flex justify-between items-center md:-mr-7'>
-            <Notifications />
+          <div className='w-24 flex items-center mr-10'>
             <SignOut />
           </div>
         </div>

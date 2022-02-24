@@ -3,11 +3,14 @@ import React, { useEffect, useState } from 'react';
 const AuthContext = React.createContext({
     isLoggedIn: false,
     onLogin: () => {},
-    onLogout: () => {}
+    onLogout: () => {},
+    accAddress: "-",
+    getAddress: () => {}
 });
 
 export const AuthContextProvider = (props) => {
     const [isLoggedIn, setisLoggedIn] = useState(false);
+    const [accAddress, setAccAddress] = useState("-")
 
     useEffect(() => {
         if (localStorage.getItem("loggedIn")){
@@ -21,18 +24,22 @@ export const AuthContextProvider = (props) => {
     }
 
     const logoutHandler = () => {
-        window.ethereum.on('disconnect', ()=>{
-            console.log("disconnected");
-        });
+        setAccAddress("-")
         setisLoggedIn(false);
         localStorage.removeItem("loggedIn")
+    }
+
+    const getAddressHandler = (address) => {
+        setAccAddress(address);
     }
 
     return (
         <AuthContext.Provider value={{
             isLoggedIn: isLoggedIn,
             onLogout: logoutHandler,
-            onLogin: loginHandler
+            onLogin: loginHandler,
+            accAddress: accAddress,
+            getAddress: getAddressHandler
         }}>
             {props.children}
         </AuthContext.Provider>

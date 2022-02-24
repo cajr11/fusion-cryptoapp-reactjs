@@ -27,9 +27,9 @@ const Transfer = () => {
     useEffect(() => {
         const chainChangedhandler = (chainId) => {
             try{
-                    if (chainId !== "0x1" && chainId !== "0x3" && chainId !== "0x38" && chainId !== "0x61"){
-                        throw new Error("Network not supported, please connect again");
-                    }
+                if (chainId !== "0x1" && chainId !== "0x3" && chainId !== "0x38" && chainId !== "0x61"){
+                    throw new Error("Network not supported, please connect again");
+                }
             }catch(error){
                 setIsError(error);
                 ctx.onLogout();

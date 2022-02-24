@@ -23,8 +23,15 @@ const ConnectWallet = () => {
                  // Request permission to conncect to user's accounts
                  await provider.send("eth_requestAccounts", []);
  
-                 // Allows our Dapp to sign transactions so user can send ether and pay to change state within the blockchain.
-                 // const signer = provider.getSigner()
+                // Reprompts user to connect even while connected, in case of wrong network
+                 await window.ethereum.request({
+                    method: 'wallet_requestPermissions',
+                    params: [{
+                      eth_accounts: {},
+                    }]
+                  });
+
+                  ctx.getAddress(await window.ethereum.selectedAddress.slice(0, 5) + "..." + window.ethereum.selectedAddress.slice(37,42));
  
                  setBtnActive(true);
                  ctx.onLogin();
