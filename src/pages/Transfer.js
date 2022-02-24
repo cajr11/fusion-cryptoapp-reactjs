@@ -3,13 +3,36 @@ import Chain from '../components/transfer/Chain'
 import AuthContext from '../store/auth-context';
 import ConnectWallet from '../components/UI/ConnectWallet';
 import ErrorModal from '../components/UI/ErrorModal';
+import { ethers } from 'ethers';
 
 const Transfer = () => {
     const [amount, setAmount] = useState("");
     const [destinationAddress, setDestinationAddress] = useState("");
     const [isError, setIsError] = useState(false)
+    const [txError, setTxError] = useState();
+    const [txs, setTxs] = useState([]);
     const ctx = useContext(AuthContext);
 
+    const makePayment = async (e) => {
+        e.preventDefault();
+        try{
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner();
+            ethers.utils.getAddress(destinationAddress);
+            const tx = await signer.sendTransaction({
+                to: destinationAddress,
+
+                // convert to wei
+                value: ethers.utils.parseEther(amount),
+            })
+            setTxs([tx])
+            setAmount("");
+            setDestinationAddress("");
+        } catch(error){
+            setTxError(error)
+            console.log(error);
+        }
+    }
 
     const closeModalHandler = () => {
         setIsError(false);
@@ -21,7 +44,7 @@ const Transfer = () => {
     }
 
     const amountHandler = (e) => {
-        setAmount(parseFloat(e.target.value));
+        setAmount(e.target.value);
     }
 
     useEffect(() => {
@@ -66,8 +89,8 @@ const Transfer = () => {
                 <form className='mt-3 w-11/12 lg:w-9/12 h-96 mx-auto border-2 border-gray-600 bg-neutral-900 flex items-center justify-center rounded-md'>
                     <div className='h-4/6 w-9/12 flex flex-col items-center justify-evenly border-2 border-gray-600'>
                         <input className='w-8/12 h-1/6 rounded-md placeholder-neutral-600 pl-3' type="number" step="0.1" placeholder='Amount' value={amount} onChange={amountHandler} />
-                        <input className='w-8/12 h-1/6 rounded-md placeholder-neutral-600 pl-3' type="text" minLength="42" maxLength="42" placeholder='Address' value={destinationAddress} onChange={destinationAddressHandler} />
-                        <button className='h-14 w-28 bg-gray-600 rounded-md font-bold text-stone-300'>Send</button>
+                        <input className='w-8/12 h-1/6 rounded-md placeholder-neutral-600 pl-3' type="text" placeholder='Account Address' value={destinationAddress} onChange={destinationAddressHandler} />
+                        <button className='h-14 w-28 bg-gray-600 rounded-md font-bold text-stone-300' onClick={makePayment}>Send</button>
                     </div>
                 </form>
             </div>
