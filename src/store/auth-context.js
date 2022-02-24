@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const AuthContext = React.createContext({
     isLoggedIn: false,
     onLogin: () => {},
     onLogout: () => {},
-    accAddress: "-",
+    accAddress: "",
     getAddress: () => {}
 });
 
 export const AuthContextProvider = (props) => {
     const [isLoggedIn, setisLoggedIn] = useState(false);
-    const [accAddress, setAccAddress] = useState("-")
-
-    useEffect(() => {
-        if (localStorage.getItem("loggedIn")){
-            setisLoggedIn(true)
-        }
-    }, [])
+    const [accAddress, setAccAddress] = useState("")
 
     const loginHandler = () => {
         setisLoggedIn(true);
@@ -24,7 +18,7 @@ export const AuthContextProvider = (props) => {
     }
 
     const logoutHandler = () => {
-        setAccAddress("-")
+        setAccAddress("")
         setisLoggedIn(false);
         localStorage.removeItem("loggedIn")
     }

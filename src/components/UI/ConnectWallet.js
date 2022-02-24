@@ -48,8 +48,8 @@ const ConnectWallet = () => {
 
     return (
         <>
-            <div className='mt-3 mx-auto w-11/12 h-96 flex items-center justify-center'>
-                <button className={`w-40 h-16 rounded-md bg-neutral-900 font-bold text-stone-300 ${btnActive ? "" : "cursor-not-allowed"}`} onClick={connectWalletHandler} disabled={!btnActive}>
+            <div className='w-12/12 flex items-center justify-center'>
+                <button className={`w-32 h-10 rounded-md text-xs bg-yellow-700 font-bold text-stone-300 ${btnActive ? "" : "cursor-not-allowed"}`} onClick={connectWalletHandler} disabled={!btnActive}>
                     Connect Wallet
                 </button>
             </div>

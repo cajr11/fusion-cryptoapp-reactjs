@@ -3,14 +3,16 @@ import Chain from '../components/transfer/Chain'
 import AuthContext from '../store/auth-context';
 import ConnectWallet from '../components/UI/ConnectWallet';
 import ErrorModal from '../components/UI/ErrorModal';
+import SuccessModal from '../components/UI/SuccessModal';
 import { ethers } from 'ethers';
+
 
 const Transfer = () => {
     const [amount, setAmount] = useState("");
     const [destinationAddress, setDestinationAddress] = useState("");
     const [isError, setIsError] = useState(false)
     const [txError, setTxError] = useState();
-    const [txs, setTxs] = useState([]);
+    const [txs, setTxs] = useState(null);
     const ctx = useContext(AuthContext);
 
     const makePayment = async (e) => {
@@ -30,13 +32,20 @@ const Transfer = () => {
             setDestinationAddress("");
         } catch(error){
             setTxError(error)
-            console.log(error);
         }
     }
 
     const closeModalHandler = () => {
         setIsError(false);
     };
+
+    const transactionErroHandler = () => {
+        setTxError(false);
+    };
+
+    const closeSuccessModalHandler = () => {
+        setTxs(null)
+    }
 
 
     const destinationAddressHandler = (e) => {
@@ -73,7 +82,9 @@ const Transfer = () => {
     if (!ctx.isLoggedIn) {
         return (
            <>
-            <ConnectWallet />
+            <div className='h-96 flex items-center justify-center'>
+                <ConnectWallet />
+            </div>
             {isError && <ErrorModal err={isError} onCloseModal={closeModalHandler} />}
            </>
         )
@@ -82,18 +93,22 @@ const Transfer = () => {
 
     if (ctx.isLoggedIn) {
             return (
-            <div>
-                <Chain />
+            <>
+                <div>
+                    <Chain />
 
-                {/* Tranfer Form */}
-                <form className='mt-3 w-11/12 lg:w-9/12 h-96 mx-auto border-2 border-gray-600 bg-neutral-900 flex items-center justify-center rounded-md'>
-                    <div className='h-4/6 w-9/12 flex flex-col items-center justify-evenly border-2 border-gray-600'>
-                        <input className='w-8/12 h-1/6 rounded-md placeholder-neutral-600 pl-3' type="number" step="0.1" placeholder='Amount' value={amount} onChange={amountHandler} />
-                        <input className='w-8/12 h-1/6 rounded-md placeholder-neutral-600 pl-3' type="text" placeholder='Account Address' value={destinationAddress} onChange={destinationAddressHandler} />
-                        <button className='h-14 w-28 bg-gray-600 rounded-md font-bold text-stone-300' onClick={makePayment}>Send</button>
-                    </div>
-                </form>
-            </div>
+                    {/* Tranfer Form */}
+                    <form className='mt-3 w-11/12 lg:w-9/12 h-96 mx-auto border-2 border-gray-600 bg-neutral-900 flex items-center justify-center rounded-md'>
+                        <div className='h-4/6 w-9/12 flex flex-col items-center justify-evenly border-2 border-gray-600'>
+                            <input className='w-8/12 h-1/6 rounded-md placeholder-neutral-600 pl-3' type="number" step="0.1" placeholder='Amount' value={amount} onChange={amountHandler} />
+                            <input className='w-8/12 h-1/6 rounded-md placeholder-neutral-600 pl-3' type="text" placeholder='Account Address' value={destinationAddress} onChange={destinationAddressHandler} />
+                            <button className='h-14 w-28 bg-gray-600 rounded-md font-bold text-stone-300' onClick={makePayment}>Send</button>
+                        </div>
+                    </form>
+                </div>
+                {txError && <ErrorModal err={txError} onCloseModal={transactionErroHandler} />}
+                {txs && <SuccessModal onCloseModal={closeSuccessModalHandler} txs={txs} />}
+            </>
         )
     }
 }
