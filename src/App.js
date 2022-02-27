@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Tokens from "./pages/Tokens";
 import TokenDetails from "./pages/TokenDetails";
 import Transfer from "./pages/Transfer";
+import Wallet from "./pages/Wallet"
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
             <Route path="/tokens" element={<Tokens />} />
             <Route path="/tokens/:tokenDetails" element={<TokenDetails />}/>
             <Route path="/transfer" element={<Transfer />}/>
-            <Route />
+            <Route path="/wallet" element={<Wallet/>} />
         </Routes>
       </Layout>
     </div>
