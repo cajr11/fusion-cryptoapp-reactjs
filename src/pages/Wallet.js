@@ -67,6 +67,15 @@ const Wallet = () => {
                </>
             )
         }
+
+
+        if (ctx.isLoggedIn){
+            return (
+                <div>
+                    Wallet
+                </div>
+            )
+        }
         
 }
 
