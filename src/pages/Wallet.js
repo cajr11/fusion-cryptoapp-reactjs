@@ -5,34 +5,13 @@ import ErrorModal from '../components/UI/ErrorModal';
 import SuccessModal from '../components/UI/SuccessModal';
 
 const Wallet = () => {
-    const [amount, setAmount] = useState("");
-    const [destinationAddress, setDestinationAddress] = useState("");
     const [isError, setIsError] = useState(false)
-    const [txError, setTxError] = useState();
-    const [txs, setTxs] = useState(null);
     const ctx = useContext(AuthContext);
 
     
         const closeModalHandler = () => {
             setIsError(false);
         };
-    
-        const transactionErroHandler = () => {
-            setTxError(false);
-        };
-    
-        const closeSuccessModalHandler = () => {
-            setTxs(null)
-        }
-    
-    
-        const destinationAddressHandler = (e) => {
-            setDestinationAddress(e.target.value);
-        }
-    
-        const amountHandler = (e) => {
-            setAmount(e.target.value);
-        }
     
         useEffect(() => {
             const chainChangedhandler = (chainId) => {
