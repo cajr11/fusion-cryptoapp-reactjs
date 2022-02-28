@@ -26,7 +26,7 @@ const SearchBar = () => {
           }
         })
         const data = await res.json();
-        console.log(await data.data.coins[0].uuid.split("").includes("_"));
+        console.log(await data.data.coins[0].uuid.split(""));
 
         // if (data.data.coins[0].uuid.split("").includes("_")) {
         //   navigate("error")
