@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY;
+
 const SearchBar = () => {
     const [searchedCoin, setSearchedCoin] = useState("");
     const searchRef = useRef(null);
@@ -22,7 +24,7 @@ const SearchBar = () => {
           "method": "GET",
           "headers": {
             "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-            "x-rapidapi-key": "1e8b3b2d07msh1f91842ecc87f34p1352cejsna4f3846d2722"
+            "x-rapidapi-key": RAPID_API_KEY
           }
         })
         const data = await res.json();

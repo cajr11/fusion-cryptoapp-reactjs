@@ -4,7 +4,10 @@ import TokenHeading from '../components/token-details/TokenHeading'
 import TokenStats from '../components/token-details/TokenStats'
 import { useParams } from 'react-router-dom';
 import { Rings } from 'react-loader-spinner';
-import Error from './Error';
+import NotFound from './NotFound';
+
+
+const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY;
 
 const TokenDetails = () => {
     const params = useParams();
@@ -16,7 +19,7 @@ const TokenDetails = () => {
             "method": "GET",
             "headers": {
               "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-              "x-rapidapi-key": "1e8b3b2d07msh1f91842ecc87f34p1352cejsna4f3846d2722"
+              "x-rapidapi-key": RAPID_API_KEY
             }
           })
 
@@ -35,7 +38,7 @@ const TokenDetails = () => {
 
   if(tokenData === "unfound"){
     return (
-      <Error />
+      <NotFound />
     )
   } else {
 

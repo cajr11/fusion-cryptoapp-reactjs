@@ -1,11 +1,35 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from '../store/auth-context';
 import ConnectWallet from '../components/UI/ConnectWallet';
 import ErrorModal from '../components/UI/ErrorModal';
+import { database } from '../firebase';
+import { ref, onValue } from 'firebase/database';
+
+
+const db = database;
 
 const Wallet = () => {
     const [isError, setIsError] = useState(false)
     const ctx = useContext(AuthContext);
+
+        useEffect(() => {
+            const usersRef = ref(db, "xxxxxx");
+
+            console.log(usersRef);
+
+            onValue(usersRef, (snapshot) => {
+                const data = snapshot.val();
+                console.log(data);
+            })
+
+            // usersRef.on("value", (snapshot) => {
+            //     console.log(snapshot.val);
+            // })
+
+            // return () => {
+            //     usersRef.off();
+            // }
+        })
 
     
         const closeModalHandler = () => {

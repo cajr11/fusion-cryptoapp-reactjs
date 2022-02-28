@@ -5,7 +5,7 @@ import Tokens from "./pages/Tokens";
 import TokenDetails from "./pages/TokenDetails";
 import Transfer from "./pages/Transfer";
 import Wallet from "./pages/Wallet"
-import Error from "./pages/Error";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
             <Route path="/tokens/:tokenDetails" element={<TokenDetails />}/>
             <Route path="/transfer" element={<Transfer />}/>
             <Route path="/wallet" element={<Wallet/>} />
-            <Route path="/error" element={<Error/>} />
+            <Route path="/token-not-found" element={<NotFound />} />
         </Routes>
       </Layout>
     </div>
