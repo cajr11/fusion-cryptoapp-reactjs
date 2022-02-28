@@ -26,13 +26,8 @@ const SearchBar = () => {
           }
         })
         const data = await res.json();
-        console.log(await data);
 
         navigate(`tokens/${await data.data.coins[0].uuid}`);
-
-        // if (data.data.coins[0].uuid){
-        //   navigate(`tokens/${await data.data.coins[0].uuid}`);
-        // }
 
         searchRef.current.value = "";
       }

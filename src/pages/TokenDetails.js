@@ -21,7 +21,8 @@ const TokenDetails = () => {
           })
 
           const data = await res.json();
-          console.log(await data);
+
+          // If no 24hVolume, redirect to error page
           if (await data.data.coin["24hVolume"]){
             setTokenData(await data.data.coin);
           } else {
