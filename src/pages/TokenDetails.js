@@ -4,6 +4,7 @@ import TokenHeading from '../components/token-details/TokenHeading'
 import TokenStats from '../components/token-details/TokenStats'
 import { useParams } from 'react-router-dom';
 import { Rings } from 'react-loader-spinner';
+import Error from './Error';
 
 const TokenDetails = () => {
     const params = useParams();
@@ -20,11 +21,22 @@ const TokenDetails = () => {
           })
 
           const data = await res.json();
-          setTokenData(await data.data.coin);
+          console.log(await data);
+          if (await data.data.coin["24hVolume"]){
+            setTokenData(await data.data.coin);
+          } else {
+            setTokenData("unfound")
+          }
         }
         getCoinData();
-    },[params.tokenDetails])
+    },[params.tokenDetails]);
 
+
+  if(tokenData === "unfound"){
+    return (
+      <Error />
+    )
+  } else {
 
   return (
     <div className='w-11/12 relative mx-auto mt-4'>
@@ -57,6 +69,7 @@ const TokenDetails = () => {
           )}
     </div>
   )
+        }
 }
 
 export default TokenDetails
