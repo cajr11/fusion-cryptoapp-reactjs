@@ -7,7 +7,6 @@ import { Rings } from 'react-loader-spinner';
 
 const TokenDetails = () => {
     const params = useParams();
-    console.log(params);
     const [tokenData, setTokenData] = useState(null)
 
     useEffect(() => {
@@ -22,7 +21,6 @@ const TokenDetails = () => {
 
           const data = await res.json();
           setTokenData(await data.data.coin);
-          console.log(await data.data.coin);
         }
         getCoinData();
     },[params.tokenDetails])

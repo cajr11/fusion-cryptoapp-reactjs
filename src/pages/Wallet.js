@@ -1,8 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import AuthContext from '../store/auth-context';
 import ConnectWallet from '../components/UI/ConnectWallet';
 import ErrorModal from '../components/UI/ErrorModal';
-import SuccessModal from '../components/UI/SuccessModal';
 
 const Wallet = () => {
     const [isError, setIsError] = useState(false)
