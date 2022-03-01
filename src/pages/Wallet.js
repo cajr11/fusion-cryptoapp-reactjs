@@ -11,27 +11,30 @@ const db = database;
 const Wallet = () => {
     const [isError, setIsError] = useState(false)
     const ctx = useContext(AuthContext);
-    const [txData, setTxData] = useState([]);
+    const [txs, setTxs] = useState(null)
 
-        // useEffect(() => {
-        //     const usersRef = ref(db, "xxxxxx");
+     // firebase object keys always in uppercase, so wallet address needs formatting
+    const formattedAddress = ctx.addressFull.split("").map(char => {
+        return typeof(char) === "string" ? char.toUpperCase() : char;
+    }).join("");
 
-        //     console.log(usersRef);
+        useEffect(() => {
+            // Query db using user's wallet address
+            const usersRef = ref(db, 'users/' + formattedAddress);
 
-        //     onValue(usersRef, (snapshot) => {
-        //         const data = snapshot.val();
-        //         console.log(data);
-        //         setTxData(data)
-        //     })
+           
+            onValue(usersRef, (snapshot) => {
+                const data = snapshot.val();
+                if (data !== null){
+                    console.log(data); 
 
-        //     // usersRef.on("value", (snapshot) => {
-        //     //     console.log(snapshot.val);
-        //     // })
-
-        //     // return () => {
-        //     //     usersRef.off();
-        //     // }
-        // })
+                    // turn tx entries into an array of tx data without complicated firebase keys
+                    const formattedTxs = Object.values(data).map( (value) => value)
+                    console.log(formattedTxs);
+                    setTxs(formattedTxs);
+                }
+            }); 
+        }, [ctx.addressFull, formattedAddress])
 
     
         const closeModalHandler = () => {
@@ -69,29 +72,14 @@ const Wallet = () => {
 
                     {/* Transactions */}
                     <div className='w-11/12 border border-gray-600 bg-neutral-900 mt-3 flex flex-col items-center py-5 md:flex-row  md:flex-wrap md:justify-center mb-4'>
-                        <div className='border-2 border-gray-600 h-44 w-80 rounded-md m-2 flex flex-col pl-3 pt-5 space-y-5 text-stone-300 bg-neutral-800'>
-                            <p className='font-bold'>To:</p>
-                            <p className='font-bold'>Amount:</p>   
-                            <p className='font-bold'>Date:</p> 
+                        {txs !== null && txs.map((tx, i) => (
+                            <div key={i} className='border-2 border-gray-600 h-44 w-96 rounded-md m-2 flex flex-col pl-3 pt-5 space-y-4 text-stone-300 bg-neutral-800 transaction-details'>
+                            <p className='font-bold'>From: {tx.from}</p>
+                            <p className='font-bold'>To: {tx.to}</p>
+                            <p className='font-bold'>Amount: {tx.amount}</p>   
+                            <p className='font-bold'>Date: {tx.date}</p> 
                         </div>
-
-                        <div className='border-2 border-gray-600 h-44 w-80 rounded-md m-2 flex flex-col pl-3 pt-5 space-y-5 text-stone-300 bg-neutral-800'>
-                            <p className='font-bold'>To:</p>
-                            <p className='font-bold'>Amount:</p>   
-                            <p className='font-bold'>Date:</p> 
-                        </div>   
-
-                        <div className='border-2 border-gray-600 h-44 w-80 rounded-md m-2 flex flex-col pl-3 pt-5 space-y-5 text-stone-300 bg-neutral-800'>
-                            <p className='font-bold'>To:</p>
-                            <p className='font-bold'>Amount:</p>   
-                            <p className='font-bold'>Date:</p> 
-                        </div>  
-
-                        <div className='border-2 border-gray-600 h-44 w-80 rounded-md m-2 flex flex-col pl-3 pt-5 space-y-5 text-stone-300 bg-neutral-800'>
-                            <p className='font-bold'>To:</p>
-                            <p className='font-bold'>Amount:</p>   
-                            <p className='font-bold'>Date:</p> 
-                        </div>  
+                        ))}
                     </div>
                 </div>
             )

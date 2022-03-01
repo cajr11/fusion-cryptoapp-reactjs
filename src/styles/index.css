@@ -92,4 +92,8 @@ code {
   .wallet-details{
     width: 600px
   }
+
+  .transaction-details {
+    font-size: 12px
+  }
 }

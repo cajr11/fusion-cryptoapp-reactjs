@@ -5,7 +5,10 @@ import ConnectWallet from '../components/UI/ConnectWallet';
 import ErrorModal from '../components/UI/ErrorModal';
 import SuccessModal from '../components/UI/SuccessModal';
 import { ethers } from 'ethers';
+import { database } from '../firebase';
+import { ref, push } from 'firebase/database';
 
+const db = database;
 
 const Transfer = () => {
     const [amount, setAmount] = useState("");
@@ -28,6 +31,25 @@ const Transfer = () => {
                 value: ethers.utils.parseEther(amount),
             })
             setTxs([tx])
+
+            // Get current day and month of transaction
+            const txDate = new Date();
+            const txDay = txDate.getDate()
+            const txMonth = txDate.toLocaleString('default', { month: 'short' })
+
+            // format user address to all capitals to ease firebase querying
+            const formattedAddress = destinationAddress.split("").map(char => {
+                return typeof(char) === "string" ? char.toUpperCase() : char;
+            }).join("")
+
+            push(ref(db, 'users/' + formattedAddress), {
+                from: ctx.addressFull,
+                to: destinationAddress,
+
+                // format price from big int to smaller value
+                amount: ethers.utils.formatEther(tx.value["_hex"]),
+                date: txDay + " " + txMonth
+              });
             setAmount("");
             setDestinationAddress("");
         } catch(error){

@@ -21,10 +21,10 @@ const ConnectWallet = () => {
                  const provider = new ethers.providers.Web3Provider(window.ethereum)
 
                  // Request permission to conncect to user's accounts
-                 const mainAccounts = await provider.send("eth_requestAccounts", []);
+                 await provider.send("eth_requestAccounts", []);
  
                 // Reprompts user to connect even while connected, in case of wrong network
-                 const accounts = await window.ethereum.request({
+                 await window.ethereum.request({
                     method: 'wallet_requestPermissions',
                     params: [{
                       eth_accounts: {},
