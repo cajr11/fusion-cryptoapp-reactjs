@@ -54,5 +54,30 @@ https://faucet.dimensions.network/
 On this page, once authenticated, users can view transaction details of transactions carried out within the app, either sent or recieved. Also their wallet balance and complete wallet address will be displayed here.
 
 
+## Running Locally
 
+### Installation Steps
+
+```
+npm install
+```
+
+```
+npm start
+```
+
+### Environment Variables
+
+A .env file will need to be created at the highest level of the project folder, within this file 3 environment variables will need to be created. These will be for the Rapid API Coinranking API which was used to retrieve token data and the others for the Firebase Realtime Database which stores users' transactyion data along with the Firebase project id.
+
+```
+REACT_APP_RAPID_API_KEY=key
+REACT_APP_FIREBASE_API_KEY=key
+REACT_APP_FIREBASE_PROJECT_ID=id
+```
+
+
+### Firebase
+
+To setup a database, go to the Firebase website, login and navigate to the developer console. Here you will initialise a new project for the Realtime Database option, you can name it and change the id if needed. Navigate to the project settings and add an app, copy the details in the "SDK setup and configuration" snippet, then add them to you environment variables accordingly.
 
