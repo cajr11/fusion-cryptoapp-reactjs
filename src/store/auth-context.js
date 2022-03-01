@@ -5,12 +5,16 @@ const AuthContext = React.createContext({
     onLogin: () => {},
     onLogout: () => {},
     accAddress: "",
-    getAddress: () => {}
+    addressFull: "",
+    getAddress: () => {},
+    getBalance: () => {}
 });
 
 export const AuthContextProvider = (props) => {
     const [isLoggedIn, setisLoggedIn] = useState(false);
-    const [accAddress, setAccAddress] = useState("")
+    const [accAddress, setAccAddress] = useState("");
+    const [addressFull, setAddressFull] = useState("");
+    const [balance, setBalance] = useState("")
 
     const loginHandler = () => {
         setisLoggedIn(true);
@@ -27,13 +31,25 @@ export const AuthContextProvider = (props) => {
         setAccAddress(address);
     }
 
+    const getAddressFullHandler = (address) => {
+        setAddressFull(address)
+    }
+
+    const getBalanceHandler = (balance) => {
+        setBalance(balance);
+    }
+
     return (
         <AuthContext.Provider value={{
             isLoggedIn: isLoggedIn,
             onLogout: logoutHandler,
             onLogin: loginHandler,
             accAddress: accAddress,
-            getAddress: getAddressHandler
+            addressFull: addressFull,
+            getAddress: getAddressHandler,
+            getAddressFull: getAddressFullHandler,
+            getBalance: getBalanceHandler,
+            balance: balance
         }}>
             {props.children}
         </AuthContext.Provider>

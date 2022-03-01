@@ -21,10 +21,10 @@ const ConnectWallet = () => {
                  const provider = new ethers.providers.Web3Provider(window.ethereum)
 
                  // Request permission to conncect to user's accounts
-                 await provider.send("eth_requestAccounts", []);
+                 const mainAccounts = await provider.send("eth_requestAccounts", []);
  
                 // Reprompts user to connect even while connected, in case of wrong network
-                 await window.ethereum.request({
+                 const accounts = await window.ethereum.request({
                     method: 'wallet_requestPermissions',
                     params: [{
                       eth_accounts: {},
@@ -32,6 +32,14 @@ const ConnectWallet = () => {
                   });
 
                   ctx.getAddress(await window.ethereum.selectedAddress.slice(0, 5) + "..." + window.ethereum.selectedAddress.slice(37,42));
+                  ctx.getAddressFull(await window.ethereum.selectedAddress);
+
+                  const balance = await window.ethereum.request({
+                    method: "eth_getBalance",
+                    params: [await window.ethereum.selectedAddress, "latest"]
+                  })
+
+                  ctx.getBalance(ethers.utils.formatEther(await balance))
  
                  setBtnActive(true);
                  ctx.onLogin();

@@ -59,8 +59,18 @@ const Transfer = () => {
     useEffect(() => {
         const chainChangedhandler = (chainId) => {
             try{
+
+                // If chain ID is not BSC main/testnet or Ethereum main/testnet throw error
                 if (chainId !== "0x1" && chainId !== "0x3" && chainId !== "0x38" && chainId !== "0x61"){
                     throw new Error("Network not supported, please connect again");
+                } else {
+                    const provider = new ethers.providers.Web3Provider(window.ethereum);
+                    const signer = provider.getSigner();
+                    signer.getAddress().then((address) => {
+                        return provider.getBalance(address);
+                    }).then((balance) => {
+                        ctx.getBalance(ethers.utils.formatEther(balance));
+                    });
                 }
             }catch(error){
                 setIsError(error);
@@ -69,6 +79,7 @@ const Transfer = () => {
         }
 
         if(window.ethereum){
+            // When chain is changed, metamask pop up confirmation and update balance
             window.ethereum.on("chainChanged", chainChangedhandler)
         }
         
