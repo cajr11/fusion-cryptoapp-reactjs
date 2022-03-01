@@ -2,6 +2,12 @@
 
 Fusion is a decentralised application which renders latest crypto data and connects to users' MetaMask wallets to authenticate and enable them to cinteract with the blockchain.
 
+## Demo
+
+![](/src/assets/app-demo.gif)
+
+[Live App](https://fusion-cryptoapp-reactjs.vercel.app/)
+
 ## Stack
 
 <div style="display: flex; width: 300px justify-content: space-between;">
