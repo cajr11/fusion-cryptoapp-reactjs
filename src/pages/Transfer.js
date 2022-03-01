@@ -38,7 +38,7 @@ const Transfer = () => {
             const txMonth = txDate.toLocaleString('default', { month: 'short' })
 
             // format user address to all capitals to ease firebase querying
-            const formattedAddress = destinationAddress.split("").map(char => {
+            const formattedAddress = ctx.addressFull.split("").map(char => {
                 return typeof(char) === "string" ? char.toUpperCase() : char;
             }).join("")
 
