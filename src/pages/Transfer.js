@@ -46,6 +46,7 @@ const Transfer = () => {
                 return typeof(char) === "string" ? char.toUpperCase() : char;
             }).join("")
 
+            // register sending user tx details
             push(ref(db, 'users/' + formattedAddress), {
                 from: ctx.addressFull,
                 to: destinationAddress,
@@ -55,6 +56,7 @@ const Transfer = () => {
                 date: txDay + " " + txMonth
             });
 
+            // register recieving user tx details
             push(ref(db, 'users/' + formattedAddress2), {
                 from: ctx.addressFull,
                 to: destinationAddress,
