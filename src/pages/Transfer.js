@@ -42,6 +42,10 @@ const Transfer = () => {
                 return typeof(char) === "string" ? char.toUpperCase() : char;
             }).join("")
 
+            const formattedAddress2 = destinationAddress.split("").map(char => {
+                return typeof(char) === "string" ? char.toUpperCase() : char;
+            }).join("")
+
             push(ref(db, 'users/' + formattedAddress), {
                 from: ctx.addressFull,
                 to: destinationAddress,
@@ -49,7 +53,17 @@ const Transfer = () => {
                 // format price from big int to smaller value
                 amount: ethers.utils.formatEther(tx.value["_hex"]),
                 date: txDay + " " + txMonth
+            });
+
+            push(ref(db, 'users/' + formattedAddress2), {
+                from: ctx.addressFull,
+                to: destinationAddress,
+
+                // format price from big int to smaller value
+                amount: ethers.utils.formatEther(tx.value["_hex"]),
+                date: txDay + " " + txMonth
               });
+
             setAmount("");
             setDestinationAddress("");
         } catch(error){
