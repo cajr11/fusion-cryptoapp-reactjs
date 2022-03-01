@@ -57,7 +57,7 @@ const ConnectWallet = () => {
     return (
         <>
             <div className='w-12/12 flex items-center justify-center'>
-                <button className={`w-32 h-10 rounded-md text-xs bg-yellow-700 font-bold text-stone-300 ${btnActive ? "" : "cursor-not-allowed"}`} onClick={connectWalletHandler} disabled={!btnActive}>
+                <button className={`w-32 h-10 rounded-md text-xs bg-gray-600 font-bold text-stone-300 ${btnActive ? "" : "cursor-not-allowed"}`} onClick={connectWalletHandler} disabled={!btnActive}>
                     Connect Wallet
                 </button>
             </div>

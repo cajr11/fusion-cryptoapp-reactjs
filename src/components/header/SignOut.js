@@ -10,7 +10,7 @@ const SignOut = () => {
   }
 
   return (
-    <div className='h-10 max-w-full rounded-md bg-yellow-700 flex items-center text-stone-300 cursor-pointer' onClick={ctx.onLogout}>
+    <div className='h-10 max-w-full rounded-md bg-gray-600 flex items-center text-stone-300 cursor-pointer' onClick={ctx.onLogout}>
       <span className='mx-1'>{ctx.accAddress}</span>
     </div>
   )
