@@ -20,7 +20,22 @@ Fusion is a decentralised application which renders latest crypto data and conne
 
 ## Usage
 
-**Important** To use the transfer feature and access wallet details, MetaMask browser extension should be installed
+**NOTE** - To use the transfer feature and access wallet details, MetaMask browser extension should be installed.
+
+### Basic
+
+Users can navigate through the Homepage and Tokens to view token rankings and general data. For expanded details of a specific token, users can click on a token on the token list which will load the token details page that shows historical chart data, price info, volume, 24h change, links and a summary of the token's project details. The search functionality can also be used to render data about tokens not in the top 100 coins.
+
+## Transfer
+
+Here users can carry out transactions on the blockchain by authenticating themselves using their MetaMask wallets. Transactions can be carried out on the Ethereum or Binance Smart Chain (Mainnet/Testnet). To carry out transactions on the testnet you can fund your wallet through faucets. There are several faucets that can be used, but below one for each chain will be linked.
+
+#### BNB Faucet
+
+```
+[BSC Faucet](https://testnet.binance.org/faucet-smart)
+
+```
 
 
 
