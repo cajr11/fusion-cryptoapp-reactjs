@@ -25,13 +25,13 @@ https://fusion-cryptoapp-reactjs.vercel.app/
 
 ## Usage
 
-**NOTE** - To use the transfer feature and access wallet details, MetaMask browser extension should be installed.
+**NOTE** - To use the transfer feature and access wallet details, the MetaMask browser extension should be installed.
 
 ### Basic
 
-Users can navigate through the Homepage and Tokens to view token rankings and general data. For expanded details of a specific token, users can click on a token on the token list which will load the token details page that shows historical chart data, price info, volume, 24h change, links and a summary of the token's project details. The search functionality can also be used to render data about tokens not in the top 100 coins.
+Users can navigate through the Homepage and Tokens page to view token rankings and general data. For expanded details of a specific token, users can click on a token in the token list which will load the token details page that shows historical chart data, price info, volume, 24h change, links and a summary of the token's project details. The search functionality can also be used to render data about tokens not in the top 100 coins.
 
-## Transfer
+### Transfer
 
 Here users can carry out transactions on the blockchain by authenticating themselves using their MetaMask wallets. Transactions can be carried out on the Ethereum or Binance Smart Chain (Mainnet/Testnet). To carry out transactions on the testnet you can fund your wallet through faucets. There are several faucets that can be used, but below one for each chain will be linked.
 
@@ -48,6 +48,10 @@ https://testnet.binance.org/faucet-smart
 https://faucet.dimensions.network/
 ```
 
+
+### Wallet
+
+On this page, once authenticated, users can view transaction details of transactions carried out within the app, either sent or recieved. Also their wallet balance and complete wallet address will be displayed here.
 
 
 
