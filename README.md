@@ -6,7 +6,12 @@ Fusion is a decentralised application which renders latest crypto data and conne
 
 ![](/src/assets/app-demo.gif)
 
-[Live App](https://fusion-cryptoapp-reactjs.vercel.app/)
+
+#### Live application link
+
+```
+https://fusion-cryptoapp-reactjs.vercel.app/
+```
 
 ## Stack
 
@@ -30,11 +35,17 @@ Users can navigate through the Homepage and Tokens to view token rankings and ge
 
 Here users can carry out transactions on the blockchain by authenticating themselves using their MetaMask wallets. Transactions can be carried out on the Ethereum or Binance Smart Chain (Mainnet/Testnet). To carry out transactions on the testnet you can fund your wallet through faucets. There are several faucets that can be used, but below one for each chain will be linked.
 
-#### BNB Faucet
+#### BSC Faucet
 
 ```
-[BSC Faucet](https://testnet.binance.org/faucet-smart)
+https://testnet.binance.org/faucet-smart
+```
 
+
+#### Ropsten Ethereum Faucet
+
+```
+https://faucet.dimensions.network/
 ```
 
 
