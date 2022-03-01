@@ -61,6 +61,7 @@ On this page, once authenticated, users can view transaction details of transact
 ```
 npm install
 ```
+then
 
 ```
 npm start
