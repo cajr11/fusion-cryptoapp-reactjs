@@ -72,10 +72,10 @@ const Wallet = () => {
                     <div className='w-11/12 border border-gray-600 bg-neutral-900 mt-3 flex flex-col items-center py-5 md:flex-row  md:flex-wrap md:justify-center mb-4'>
                         {txs !== null && txs.map((tx, i) => (
                             <div key={i} className='border-2 border-gray-600 h-44 w-96 rounded-md m-2 flex flex-col pl-3 pt-5 space-y-4 bg-neutral-800 transaction-details'>
-                            <p className='font-bold text-gray-600'>From: {" "}<span className='font-normal text-stone-300'>{tx.from}</span></p>
-                            <p className='font-bold text-gray-600 '>To: {" "}<span className='font-normal text-stone-300'>{tx.to}</span></p>
-                            <p className='font-bold text-gray-600'>Amount: {" "}<span className='font-normal text-stone-300'>{tx.amount}</span></p>   
-                            <p className='font-bold text-gray-600'>Date: {" "}<span className='font-normal text-stone-300'>{tx.date}</span></p> 
+                                <p className='font-bold text-gray-600'>From: {" "}<span className='font-normal text-stone-300'>{tx.from}</span></p>
+                                <p className='font-bold text-gray-600 '>To: {" "}<span className='font-normal text-stone-300'>{tx.to}</span></p>
+                                <p className='font-bold text-gray-600'>Amount: {" "}<span className='font-normal text-stone-300'>{tx.amount}</span></p>   
+                                <p className='font-bold text-gray-600'>Date: {" "}<span className='font-normal text-stone-300'>{tx.date}</span></p> 
                         </div>
                         ))}
                     </div>
