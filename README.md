@@ -1,6 +1,6 @@
 # Fusion Dapp
 
-Fusion is a decentralised application which renders latest crypto data and connects to users' MetaMask wallets to authenticate and enable them to cinteract with the blockchain.
+Fusion is a decentralised application which renders latest crypto data and connects to users' MetaMask wallets to authenticate and enable them to interact with the blockchain in order to carry out transactions.
 
 ## Demo
 
@@ -17,5 +17,12 @@ Fusion is a decentralised application which renders latest crypto data and conne
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/1200px-MetaMask_Fox.svg.png" alt="metamask" width="50" height="50">
     <img src="https://firebase.google.com/downloads/brand-guidelines/PNG/logo-vertical.png?hl=es" alt="firebase" width="50" height="50"><br/><br/><br/>
 </div>
+
+## Usage
+
+**Important** To use the transfer feature and access wallet details, MetaMask browser extension should be installed
+
+
+
 
 
