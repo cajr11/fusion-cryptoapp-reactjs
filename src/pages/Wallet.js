@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from '../store/auth-context';
 import ConnectWallet from '../components/UI/ConnectWallet';
 import ErrorModal from '../components/UI/ErrorModal';
+import NoTranactions from '../components/wallet/NoTranactions';
 import { database } from '../firebase';
 import { ref, onValue } from 'firebase/database';
 
@@ -78,6 +79,7 @@ const Wallet = () => {
                                 <p className='font-bold text-gray-600'>Date: {" "}<span className='font-normal text-stone-300'>{tx.date}</span></p> 
                         </div>
                         ))}
+                        {!txs && <NoTranactions />}
                     </div>
                 </div>
             )
