@@ -69,7 +69,7 @@ npm start
 
 ### Environment Variables
 
-A .env file will need to be created at the highest level of the project folder, within this file 3 environment variables will need to be created. These will be for the Rapid API Coinranking API which was used to retrieve token data and the others for the Firebase Realtime Database which stores users' transactyion data along with the Firebase project id.
+A .env file will need to be created at the highest level of the project folder, within this file 3 environment variables will need to be created. These will be for the Rapid API Coinranking API which was used to retrieve token data and the others for the Firebase Realtime Database which stores users' transaction data along with the Firebase project id.
 
 ```
 REACT_APP_RAPID_API_KEY=key
